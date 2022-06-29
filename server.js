@@ -8,6 +8,7 @@ require('dotenv').config();
 const PORT = process.env.SERVER_PORT || 4000;
 
 require('./app/routes/account.route.js')(app);
+require('./app/routes/trade.route.js')(app);
 
 
 const mysql = require('mysql2');
@@ -19,12 +20,12 @@ const connection = mysql.createPool({
     multipleStatements: true
 })
 
-app.get('/trade', (req, res) => {
-    const sql = `select * from trade_in_info`;
-    connection.query(sql, (err1, res1) => {
-        res.send(res1)
-    })
-})
+// app.get('/trade', (req, res) => {
+//     const sql = `select * from trade_in_info`;
+//     connection.query(sql, (err1, res1) => {
+//         res.send(res1)
+//     })
+// })
 
 
 
